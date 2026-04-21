@@ -1,0 +1,63 @@
+.details-page {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  min-height: 60vh;
+}
+
+.details-image-box {
+  background: var(--dark3);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10rem;
+  min-height: 450px;
+}
+
+.details-ref {
+  color: var(--or1);
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+
+.details-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin: 0.5rem 0 1rem;
+}
+
+.details-desc {
+  color: var(--steel);
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+.details-buy-box {
+  background: var(--dark2);
+  padding: 2rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+.details-price {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--or1);
+  line-height: 1;
+}
+
+.details-installments {
+  color: var(--steel);
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 900px) {
+  .details-page { grid-template-columns: 1fr; gap: 2rem; }
+}

@@ -3,6 +3,7 @@ import api from '../services/api'; // Nossa instância do Axios
 import Header from '../components/Header';
 import ProductCard from '../components/ProductCard';
 import Footer from '../components/Footer';
+import './Home.css';
 
 export default function Home() {
   const [products, setProducts] = useState([]);

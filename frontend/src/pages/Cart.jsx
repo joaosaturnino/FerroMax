@@ -21,15 +21,14 @@ export default function Cart() {
             <div className="cart-list">
               {cart.map((item) => (
                 <div key={item.id} className="cart-item">
-                  <div className="cart-item-img">{item.icone_imagem}</div>
-                  <div className="cart-item-info">
-                    <div className="cart-item-title">{item.nome}</div>
-                    <div className="cart-item-qty">Quantidade: {item.quantidade}</div>
-                  </div>
-                  <div className="cart-item-price">
-                    R$ {(item.preco_venda * item.quantidade).toFixed(2)}
-                  </div>
-                </div>
+  <div className="cart-item-img">{item.icone_imagem}</div>
+  <div className="cart-item-info">
+    <div className="cart-item-title">{item.nome}</div>
+    <div className="cart-item-qty">Qtd: {item.quantidade}</div>
+    <button onClick={() => removeFromCart(item.id)} className="btn-remove">Remover</button>
+  </div>
+  <div className="cart-item-price">R$ {(item.preco_venda * item.quantidade).toFixed(2)}</div>
+</div>
               ))}
             </div>
 

@@ -1,11 +1,10 @@
 const db = require('../config/database');
 
 const CategoryController = {
-  // Retorna todas as categorias cadastradas
   async getCategories(req, res) {
     try {
       const query = 'SELECT id, nome, icone, slug FROM categorias ORDER BY nome ASC';
-      const { rows } = await db.query(query);
+      const [rows] = await db.query(query); // <-- Extração com array [rows]
       
       res.json(rows);
     } catch (error) {

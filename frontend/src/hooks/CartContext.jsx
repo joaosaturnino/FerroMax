@@ -1,37 +1,43 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext, useEffect } from 'react';
 
-// Cria o contexto
 const CartContext = createContext();
 
-// Provider que vai englobar a aplicação
 export function CartProvider({ children }) {
-  const [cart, setCart] = useState([]);
+  // Inicializa o estado com o que estiver no LocalStorage para não perder dados ao dar refresh
+  const [cart, setCart] = useState(() => {
+    const savedCart = localStorage.getItem('ferromax_cart');
+    return savedCart ? JSON.parse(savedCart) : [];
+  });
 
-  // Função para adicionar ao carrinho
+  useEffect(() => {
+    localStorage.setItem('ferromax_cart', JSON.stringify(cart));
+  }, [cart]);
+
   const addToCart = (product) => {
-    setCart((prevCart) => {
-      const itemExists = prevCart.find((item) => item.id === product.id);
-      
-      // Se o item já existe, aumenta a quantidade
+    setCart((prev) => {
+      const itemExists = prev.find((item) => item.id === product.id);
       if (itemExists) {
-        return prevCart.map((item) =>
+        return prev.map((item) =>
           item.id === product.id ? { ...item, quantidade: item.quantidade + 1 } : item
         );
       }
-      
-      // Se não existe, adiciona com quantidade 1
-      return [...prevCart, { ...product, quantidade: 1 }];
+      return [...prev, { ...product, quantidade: 1 }];
     });
   };
 
+  const removeFromCart = (id) => {
+    setCart((prev) => prev.filter(item => item.id !== id));
+  };
+
+  const clearCart = () => setCart([]);
+
   return (
-    <CartContext.Provider value={{ cart, addToCart }}>
+    <CartContext.Provider value={{ cart, addToCart, removeFromCart, clearCart }}>
       {children}
     </CartContext.Provider>
   );
 }
 
-// Hook customizado para facilitar o uso nos componentes
 export function useCart() {
   return useContext(CartContext);
 }

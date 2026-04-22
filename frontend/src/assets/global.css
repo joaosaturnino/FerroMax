@@ -1,69 +1,48 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+/* src/assets/global.css */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap');
 
 :root {
-  --or1: #F59E0B; /* Laranja FerroMax */
-  --or2: #D97706;
-  --dark: #0E0F11;
-  --dark2: #16181C;
-  --dark3: #1E2026;
-  --dark4: #2A2D35;
-  --steel: #9CA3AF;
-  --white: #FFFFFF;
-  --border: rgba(255, 255, 255, 0.08);
-  --font-main: 'Montserrat', sans-serif;
-  --radius: 8px;
+  --or1: #F59E0B; 
+  --dark: #0A0A0B;
+  --dark-accent: #141417;
+  --border: rgba(255, 255, 255, 0.05);
+  --steel: #A1A1AA;
 }
-
-* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
   background-color: var(--dark);
-  color: var(--white);
-  font-family: var(--font-main);
-  -webkit-font-smoothing: antialiased;
+  color: #FAFAFA;
+  font-family: 'Montserrat', sans-serif;
+  overflow-x: hidden;
 }
 
-a { text-decoration: none; color: inherit; transition: 0.3s; }
-ul { list-style: none; }
-button { font-family: inherit; border: none; cursor: pointer; transition: 0.3s; }
-
-/* Botões Globais */
 .btn-main {
   background: var(--or1);
-  color: var(--dark);
+  color: #000;
+  border-radius: 6px;
+  padding: 12px 24px;
   font-weight: 700;
-  padding: 1rem 2rem;
-  border-radius: var(--radius);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
+  transition: 0.2s ease-in-out;
+  border: none;
 }
 
-.btn-main:hover { background: var(--or2); transform: translateY(-2px); }
-
-/* Cartão de Produto (Partilhado na Home e Catálogo) */
-.prod-card {
-  background: var(--dark3);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  transition: all 0.3s ease;
+.btn-main:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
 }
 
-.prod-card:hover {
-  border-color: var(--or1);
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+.btn-remove {
+  color: #ef4444;
+  background: transparent;
+  font-size: 0.8rem;
+  margin-top: 10px;
+  border: none;
+  cursor: pointer;
 }
 
-/* Layout Global (Secções) */
-.section {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 4rem 2rem;
+.prod-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
 }
